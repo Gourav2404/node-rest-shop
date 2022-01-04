@@ -83,8 +83,7 @@ router.get('/:productId' , (req , res , next) => {
                     product :doc ,
                     request : {
                         type : 'GET' ,
-                        url : 'http;//localhost:3000/products/'
-                                     }
+                        url : 'http;//localhost:3000/products/'}
                 });
             } else {
                 res.status(404).json({message : "NO valid entry for provided ID"})
