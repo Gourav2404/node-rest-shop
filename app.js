@@ -35,10 +35,12 @@ mongoose.connect("mongodb+srv://gouravk2404:" + "3l7LCteGMb6e0jLo" /*process.env
 {   useNewUrlParser: true ,
     useUnifiedTopology: true 
 }).then(() => {
-    console.log('Database created');
+    console.log('Database connected');
 }).catch(err => {
-    console.log(`Database not created` + err);
+    console.log(`Database not connected` + err);
 });
+
+mongoose.Promise = global.Promise;
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended : false}));

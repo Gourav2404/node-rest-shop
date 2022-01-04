@@ -105,7 +105,12 @@ router.patch('/:productId' , (req , res , next) => {
     product.update({_id : id}, {$set : updateOps}).exec()
     .then(result => {
         console.log(result);
-        res.status(500).json(result);
+        res.status(500).json({
+            message : 'product updated',
+            request : {
+                type : 'GET',
+                url : 'http://localhost:3000/products/' + id
+        }});
     })
     .catch(err => {
         console.log(err);
@@ -119,7 +124,14 @@ router.delete('/:productId' , (req , res , next) => {
      const id = req.params.productId;
      product.remove({_id : id}).exec()
      .then(result => {
-         res.status(200).json(result);
+         res.status(200).json({
+             message : 'product deleted',
+             request :{
+                 type :'POST',
+                 url :'http://localhost:3000/products/' ,
+                 body : {name : 'String' , price : 'Number'}
+             }
+         });
      })
      .catch(err => {
         console.log(err);
