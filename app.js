@@ -7,7 +7,38 @@ const mongoose = require('mongoose')
 const productRoutes = require('./api/routes/products');
 const orderRoutes = require('./api/routes/order');
 
-mongoose.connect('mongodb+srv://gouravk2404:<Garry@123>@mycluster.cua8q.mongodb.net/myFirstDatabase?retryWrites=true&w=majority');
+// const db = 'mongodb+srv://gouravk2404:Garry@123@mycluster.cua8q.mongodb.net/node-shop?retryWrites=true&w=majority';    
+// mongoose.connect(db , {
+//     useMongoClient : true ,
+//     useNewUrlParser:true ,
+    // useUnifiedTopology: true ,
+    // useFinadAndModify: false ,
+    // useCreateIndex : true
+//  });.then(() => {
+//     console.log('Database created');
+// }).catch(err => {
+//     console.log(`Database not created` + err);
+// });
+
+// const { MongoClient } = require('mongodb');
+// const uri = "mongodb+srv://gouravk2404:Garry@123@mycluster.cua8q.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+// const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+// client.connect(err => {
+//   const collection = client.db("test").collection("devices");
+//   // perform actions on the collection object
+//   client.close();
+// })
+
+
+
+mongoose.connect("mongodb+srv://gouravk2404:" + "3l7LCteGMb6e0jLo" /*process.env.MONGO_ATLAS_PW*/ + "@mycluster.cua8q.mongodb.net/node-shop?retryWrites=true&w=majority" , 
+{   useNewUrlParser: true ,
+    useUnifiedTopology: true 
+}).then(() => {
+    console.log('Database created');
+}).catch(err => {
+    console.log(`Database not created` + err);
+});
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended : false}));
@@ -43,3 +74,6 @@ app.use((error , req , res , next) => {
 });
 
 module.exports = app ;
+
+
+//postman , vscode(search node module , node snippet , prettier , html snippet css , html css support , express snippet , npm intellisense , path intellisense , npm dependency links , node extension pack , prettier javascript , git lens , react , auto import , auto close tag , react extension pack ,  material icon theme , )
