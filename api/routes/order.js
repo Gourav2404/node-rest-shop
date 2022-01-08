@@ -14,7 +14,7 @@ router.get('/' , (req ,res , next) => {
     .then(docs => {
         res.status(200).json({
             count : docs.length ,
-            order : docs.map(doc => {
+            Order : docs.map(doc => {
                 return {
                     _id : doc._id,
                     product : doc.product ,
@@ -49,7 +49,7 @@ router.post('/' , (req ,res , next) => {
         });
         return order.save() ;
         })
-        .then(result => {
+        .then(result => { 
             console.log(result);
             res.status(201).json({
                 message : 'Order stored',
