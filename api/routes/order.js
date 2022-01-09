@@ -23,7 +23,7 @@ router.get('/' , (req ,res , next) => {
                         type : 'GET',
                         url : 'http://localhost:3000/order/' + doc._id
                     }
-                }
+                };
             })
         });
     })
@@ -35,12 +35,13 @@ router.get('/' , (req ,res , next) => {
 });
 
 router.post('/' , (req ,res , next) => {
-    Product.findById(req.body.productId)
+    Product.find(req.body.productId)
     .then(product => {
         if (!product){
             return res.status(404).json({
                 message : 'Product not found'  
             });
+            return ;
         }
         const order = new Order({
             _id : mongoose.Types.ObjectId(),

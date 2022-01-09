@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken');
 const User = require("../models/user");
 
 router.post("/signup" , (req ,res , next) => {
-    user.find({email: req.body.email})
+    User.find({email: req.body.email})
     .exec()
     .then(user => {
         if(user.length >= 1) {
