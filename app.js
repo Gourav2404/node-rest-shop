@@ -32,7 +32,7 @@ const userRoutes = require('./api/routes/user');
 
 
 
-mongoose.connect("yourLink" , 
+mongoose.connect("mongodb+srv://gouravk2404:" + 'GWpvaq0rIp1yo4zm' + "@mycluster.cua8q.mongodb.net/node-shop?retryWrites=true&w=majority" , 
 {   useNewUrlParser: true ,
     useUnifiedTopology: true 
 }).then(() => {
