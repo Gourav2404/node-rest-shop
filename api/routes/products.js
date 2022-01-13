@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 // const Product = require('../models/product');
 const multer = require('multer');
 // const upload = multer({dest: 'uploads/'})
-const chechAuth = require('../middleware/check-auth');
+//const  require('../middleware/check-auth');
 
 const storage = multer.diskStorage({
     destination : function(req , file,cb){
@@ -69,7 +69,7 @@ router.get('/' , (req , res , next) => {
     });
 });
 
-router.post('/' , upload.single('productImage'),  chechAuth , (req , res , next) => { 
+router.post('/' , upload.single('productImage'),   (req , res , next) => { 
     // const product = {
     //     name : req.body.name ,   //old product that we dont want now
     //     price : req.body.price
@@ -109,7 +109,7 @@ router.post('/' , upload.single('productImage'),  chechAuth , (req , res , next)
     
 });
 
-router.get('/:productId' , chechAuth, (req , res , next) => {
+router.get('/:productId' , (req , res , next) => {
     const id = req.params.productId ;
     Product.findById(id)
         .select('name price _id  productImage')
@@ -134,7 +134,7 @@ router.get('/:productId' , chechAuth, (req , res , next) => {
         });
 });
 
-router.patch('/:productId' ,chechAuth, (req , res , next) => {
+router.patch('/:productId' ,(req , res , next) => {
     const id = req.params.productId;
     const updateOps = {};
     for (const ops of req.body){
@@ -158,7 +158,7 @@ router.patch('/:productId' ,chechAuth, (req , res , next) => {
     });
 });
 
-router.delete('/:productId' , chechAuth,(req , res , next) => {
+router.delete('/:productId' , (req , res , next) => {
      const id = req.params.productId;
      Product.remove({_id : id}).exec()
      .then(result => {
